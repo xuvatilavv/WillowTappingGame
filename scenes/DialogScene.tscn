@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/DialogHud.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/DialogScene.gd" type="Script" id=2]
+
+[node name="DialogScene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="DialogHud" parent="." instance=ExtResource( 1 )]
+
+[connection signal="messages_finished" from="DialogHud" to="." method="_end_scene"]

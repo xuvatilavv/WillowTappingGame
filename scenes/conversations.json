@@ -1,0 +1,29 @@
+{
+	"test_dialog": {
+		"type": "Dialog",
+		"strings": [
+			"TEST_0",
+			"TEST_1",
+			"TEST_2"
+		],
+		"image": "InterrogationBackground.jpg",
+		"next_conversation": "test_knock"
+	},
+	"test_knock": {
+		"type": "KnockCode",
+		"strings": [
+			"TEST_KNOCK_RECEIVED_0",
+			"TEST_KNOCK_REQUIRES"
+		],
+		"image": "CellBackground.jpg",
+		"next_conversation": "test_fin"
+	},
+	"test_fin": {
+		"type": "KnockCode",
+		"strings": [
+			"TEST_KNOCK_SUCCESS"
+		],
+		"image": "CellBackground.jpg",
+		"next_conversation": "END_GAME"
+	}
+}

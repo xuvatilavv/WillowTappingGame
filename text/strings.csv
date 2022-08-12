@@ -1,0 +1,14 @@
+keys	en
+PLACEHOLDER	Woops, this text hasn't been set!
+TEST_0	oh no i am in a jail
+TEST_1	this is bad times for me
+TEST_2	oh hey i hear knocking from the next cell. let me get my knock code ui out
+TEST_KNOCK_RECEIVED_0	i am a scared are you a scared
+TEST_KNOCK_REQUIRES	BOOP
+TEST_KNOCK_SUCCESS	i sure did knock that out of the park ha ha
+TEST_KNOCK_FAILURE	oh heck i am bad at this
+LABEL_QUIT	Quit
+LABEL_START	Start
+LABEL_CONTINUE	Continue
+LABEL_LETTER_TIMER	Letter Timer
+LABEL_WORD_TIMER	Word Timer
