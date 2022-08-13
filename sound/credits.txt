@@ -1,0 +1,9 @@
+Files: knock1.wav, knock2.wav, knock3.wav, knock4.wav, knock5.wav
+Artist: BenjaminNelan
+Source: cut from https://freesound.org/people/BenjaminNelan/sounds/410362/
+License: CC0
+
+File: messagebox.wav
+Artist: michorvath
+Source: https://freesound.org/people/michorvath/sounds/414763/
+License: CC0

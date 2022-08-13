@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ui/PagedRichTextLabel.gd"
 }, {
-"base": "Object",
-"class": "SceneManagerConstants",
-"language": "GDScript",
-"path": "res://addons/scene_manager/SceneManagerConstants.gd"
-}, {
 "base": "Node2D",
 "class": "VisibleScene",
 "language": "GDScript",
@@ -32,7 +27,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "DialogScene": "",
 "PagedRichTextLabel": "",
-"SceneManagerConstants": "",
 "VisibleScene": ""
 }
 
@@ -44,7 +38,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ConversationManager="*res://scenes/ConversationManager.gd"
+ConversationManager="*res://managers/ConversationManager.gd"
+AudioManager="*res://managers/AudioManager.tscn"
+
+[display]
+
+window/size/resizable=false
 
 [gui]
 

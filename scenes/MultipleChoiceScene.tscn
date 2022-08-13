@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/MultipleChoiceScene.gd" type="Script" id=1]
+[ext_resource path="res://ui/DialogHud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/theme.theme" type="Theme" id=3]
+
+[node name="MultipleChoiceScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="DialogHud" parent="." instance=ExtResource( 2 )]
+
+[node name="KnockProgress" type="ProgressBar" parent="."]
+margin_left = 118.0
+margin_top = 413.0
+margin_right = 901.0
+margin_bottom = 468.0
+theme = ExtResource( 3 )
+percent_visible = false
+
+[node name="InputTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="messages_finished" from="DialogHud" to="." method="_on_DialogHud_messages_finished"]
+[connection signal="timeout" from="InputTimer" to="." method="_on_InputTimer_timeout"]

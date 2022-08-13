@@ -24,6 +24,10 @@ onready var word_timer: Timer = $WordTimer
 var phrase := ""
 
 
+func _init():
+	var _err = connect("knock", AudioManager, "_on_knock")
+
+
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		get_tree().set_input_as_handled()

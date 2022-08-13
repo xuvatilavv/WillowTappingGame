@@ -10,9 +10,10 @@ enum SceneType {
 
 var _DialogScene = preload("res://scenes/DialogScene.tscn")
 var _KnockCodeScene = preload("res://scenes/KnockCodeScene.tscn")
+var _MultipleChoiceScene = preload("res://scenes/MultipleChoiceScene.tscn")
 
-var current_conversation
-var _conversations
+var current_conversation: Dictionary = {}
+var _conversations: Dictionary = {}
 
 
 func _init():
@@ -42,4 +43,4 @@ func show(conversation_name: String):
 		"KnockCode":
 			var _err = get_tree().change_scene_to(_KnockCodeScene)
 		"MultipleChoice":
-			pass
+			var _err = get_tree().change_scene_to(_MultipleChoiceScene)

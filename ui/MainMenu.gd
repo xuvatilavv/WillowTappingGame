@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_StartButton_pressed():
-	ConversationManager.show("test_dialog")
+	ConversationManager.show("prologue")
 
 
 func _on_QuitButton_pressed():

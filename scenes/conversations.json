@@ -1,5 +1,5 @@
 {
-	"test_dialog": {
+	"test": {
 		"type": "Dialog",
 		"strings": [
 			"TEST_0",
@@ -7,7 +7,7 @@
 			"TEST_2"
 		],
 		"image": "InterrogationBackground.jpg",
-		"next_conversation": "test_knock"
+		"next": "test_knock"
 	},
 	"test_knock": {
 		"type": "KnockCode",
@@ -16,7 +16,7 @@
 			"TEST_KNOCK_REQUIRES"
 		],
 		"image": "CellBackground.jpg",
-		"next_conversation": "test_fin"
+		"next": "test_fin"
 	},
 	"test_fin": {
 		"type": "KnockCode",
@@ -24,6 +24,367 @@
 			"TEST_KNOCK_SUCCESS"
 		],
 		"image": "CellBackground.jpg",
-		"next_conversation": "END_GAME"
+		"next": "END_GAME"
+	},
+	"prologue": {
+		"type": "Dialog",
+		"image": "CellBackground.jpg",
+		"strings": [
+			"PROLOGUE_00",
+			"PROLOGUE_01",
+			"PROLOGUE_01_X",
+			"PROLOGUE_02",
+			"PROLOGUE_03",
+			"PROLOGUE_04"
+		],
+		"next": "interview_a_00_dialog"
+	},
+	"interview_a_00_dialog": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_A_00",
+			"INTERVIEWER_A_01",
+			"INTERVIEWER_A_02",
+			"INTERVIEWER_A_03"
+		],
+		"next": "interview_a_00_choices"
+	},
+	"interview_a_00_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_03",
+		"responses": [
+			"INTERVIEWER_A_03_NULL_RESPONSE",
+			"INTERVIEWER_A_03_AFFIRMATIVE",
+			"INTERVIEWER_A_03_NEGATIVE",
+			"INTERVIEWER_A_03_TOO_MANY_TAPS"
+		],
+		"branches": [
+			"interview_a_00_choices_repeat_1",
+			"interview_a_01_dialog"
+		]
+	},
+	"interview_a_00_choices_repeat_1": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_03_NULL_RESPONSE",
+		"responses": [
+			"INTERVIEWER_A_03_NULL_RESPONSE_TWICE",
+			"INTERVIEWER_A_03_AFFIRMATIVE",
+			"INTERVIEWER_A_03_NEGATIVE",
+			"INTERVIEWER_A_03_TOO_MANY_TAPS"
+		],
+		"branches": [
+			"interview_a_00_choices_repeat_2",
+			"interview_a_01_dialog"
+		]
+	},
+	"interview_a_00_choices_repeat_2": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_03_NULL_RESPONSE_TWICE",
+		"responses": [
+			"INTERVIEWER_A_03_NULL_RESPONSE_THRICE",
+			"INTERVIEWER_A_03_AFFIRMATIVE",
+			"INTERVIEWER_A_03_NEGATIVE",
+			"INTERVIEWER_A_03_TOO_MANY_TAPS"
+		],
+		"branches": [
+			"interview_a_01_dialog"
+		]
+	},
+	"interview_a_01_dialog": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_A_04",
+			"THOUGHTS_A_04_00"
+		],
+		"next": "interview_a_01_choices"
+	},
+	"interview_a_01_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_05",
+		"responses": [
+			"INTERVIEWER_A_05_NULL_RESPONSE",
+			"INTERVIEWER_A_05_AFFIRMATIVE",
+			"INTERVIEWER_A_05_NEGATIVE"
+		],
+		"branches": [
+			"interview_a_01_choices_repeat_1",
+			"interlude_a"
+		]
+	},
+	"interview_a_01_choices_repeat_1": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_05",
+		"responses": [
+			"INTERVIEWER_A_05_NULL_RESPONSE_TWICE",
+			"INTERVIEWER_A_05_AFFIRMATIVE",
+			"INTERVIEWER_A_05_NEGATIVE"
+		],
+		"branches": [
+			"interview_a_01_choices_repeat_2",
+			"interlude_a"
+		]
+	},
+	"interview_a_01_choices_repeat_2": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_05",
+		"responses": [
+			"INTERVIEWER_A_05_NULL_RESPONSE_THRICE_FIRST_NULL_RESPONSE",
+			"INTERVIEWER_A_05_AFFIRMATIVE",
+			"INTERVIEWER_A_05_NEGATIVE"
+		],
+		"branches": [
+			"interlude_a"
+		]
+	},
+	"interview_a_02_dialog": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_A_06",
+			"THOUGHTS_A_06_00",
+		],
+		"next": "interview_a_02_choices_01"
+	},
+	"interview_a_02_choices_01": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_A",
+		"responses": [
+			"THOUGHTS_A_07_00",
+			"INTERVIEWER_A_07_A_FAMILY_AFFIRMATIVE"
+		],
+		"branches": [
+			"interview_a_02_choices_02"
+		]
+	},
+	"interview_a_02_choices_01_followup": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_A_FAMILY_FOLLOWUP",
+		"responses": [
+			"INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_NO_ANSWER",
+			"INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_ANY_ANSWER"
+		],
+		"branches": [
+			"interview_a_02_choices_02"
+		]
+	},
+	"interview_a_02_choices_02": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_B",
+		"responses": [
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED",
+			"INTERVIEWER_A_07_B_LOVER_AFFIRMATIVE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_a_02_choices_03",
+			"interview_a_02_choices_affirmative_supplemental",
+			"interview_a_02_choices_03",
+		]
+	},
+	"interview_a_02_choices_03": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_C",
+		"responses": [
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED",
+			"INTERVIEWER_A_07_C_FAMILY_FRIEND_AFFIRMATIVE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_a_02_choices_04",
+			"interview_a_02_choices_affirmative_supplemental",
+			"interview_a_02_choices_04",
+		]
+	},
+	"interview_a_02_choices_04": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_D",
+		"responses": [
+			"INTERVIEWER_A_07_E",
+			"INTERVIEWER_A_07_D_STRANGER_AFFIRMATIVE",
+			"INTERVIEWER_A_07_E"
+		],
+		"branches": [
+			"interview_a_02_choices_05_pre",
+			"interview_a_02_choices_affirmative_supplemental",
+			"interview_a_02_choices_05_pre",
+		]
+	},
+	"interview_a_02_choices_affirmative_supplemental": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"A favour for me will result in a favour for you and her, you see. Just make sure you keep answering, and truthfully, and I'll try to ensure she's happy and treated nicely, perhaps even that they put a nice soft cushion in her chair to sit on instead of leaving her to sit on the hard surface you and she are sitting on now. Otherwise... there will be no such benefits."
+		],
+		"next": "interview_a_02_choices_05_pre"
+	},
+	"interview_a_02_choices_05_pre": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_07_D",
+		"responses": [
+			"INTERVIEWER_A_08",
+			"THOUGHTS_A_08_00",
+			"THOUGHTS_A_08_01"
+		],
+		"next": "interview_a_02_choices_05_00"
+	},
+	"interview_a_02_choices_05_00": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_09_A",
+		"responses": [
+			"INTERVIEWER_A_09_A_STILL_SILENT",
+			"INTERVIEWER_A_09_A_ALPHA_AFFIRMATIVE",
+			"INTERVIEWER_A_09_A_CANONICAL_AFFIRMATIVE",
+			"INTERVIEWER_A_09_A_BRAVO_AFFIRMATIVE",
+			"INTERVIEWER_A_09_A_OTHER"
+		],
+		"branches": [
+			"interview_a_02_choices_05_01",
+			"interview_a_conclusion",
+			"interview_a_02_choices_05_01",
+		]
+	},
+	"interview_a_02_choices_05_01": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_09_B",
+		"responses": [
+			"INTERVIEWER_A_09_B_SILENT",
+			"INTERVIEWER_A_09_B_CHARLIE_AFFIRMATIVE",
+			"INTERVIEWER_A_09_B_DELTA_AFFIRMATIVE",
+			"INTERVIEWER_A_09_B_ECHO_AFFIRMATIVE",
+			"INTERVIEWER_A_09_B_OTHER"
+		],
+		"branches": [
+			"interview_a_02_choices_05_02",
+			"interview_a_conclusion",
+			"interview_a_02_choices_05_02",
+		]
+	},
+	"interview_a_02_choices_05_02": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_A_09_C",
+		"responses": [
+			"INTERVIEWER_A_09_C_SILENT",
+			"INTERVIEWER_A_09_C_FOXTROT_AFFIRMATIVE",
+			"INTERVIEWER_A_09_C_GOLF_AFFIRMATIVE",
+			"INTERVIEWER_A_09_C_OTHER"
+		],
+		"branches": [
+			"interview_a_conclusion",
+		]
+	},
+	"interview_a_conclusion": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_A_10_SOMETIMES_ANSWERED"
+		],
+		"next": "interlude_a"
+	},
+	"interlude_a": {
+		"type": "Dialog",
+		"image": "CellBackground.jpg",
+		"strings": [
+			"INTERLUDE_A_00", "INTERLUDE_A_01", "INTERLUDE_A_01_X",
+			"INTERLUDE_A_02",
+			"INTERLUDE_A_03", "INTERLUDE_A_03_X",
+			"INTERLUDE_A_04",
+			"INTERLUDE_A_04_FUDGED_BQ",
+			"INTERLUDE_A_05",
+			"INTERLUDE_A_06",
+			"INTERLUDE_A_07"
+		],
+		"next": "interview_z"
+	},
+	"interview_z": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_Z_00",
+			"THOUGHTS_Z_00_A", "THOUGHTS_Z_00_B", "THOUGHTS_Z_00_C", "THOUGHTS_Z_00_D",
+			"INTERVIEWER_Z_01", "INTERVIEWER_Z_02", "INTERVIEWER_Z_03"
+		],
+		"next": "interview_z_00_choices"
+	},
+	"interview_z_00_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_Z_04",
+		"responses": [
+			"INTERVIEWER_Z_SILENCE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_z_01_choices"
+		]
+	},
+	"interview_z_01_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_Z_05",
+		"responses": [
+			"INTERVIEWER_Z_SILENCE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_z_02_choices"
+		]
+	},
+	"interview_z_02_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_Z_06",
+		"responses": [
+			"INTERVIEWER_Z_SILENCE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_z_03_choices"
+		]
+	},
+	"interview_z_03_choices": {
+		"type": "MultipleChoice",
+		"image": "InterrogationBackground.jpg",
+		"query": "INTERVIEWER_Z_07",
+		"responses": [
+			"INTERVIEWER_Z_SILENCE",
+			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		],
+		"branches": [
+			"interview_z_conclusion"
+		]
+	},
+	"interview_z_conclusion": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"strings": [
+			"INTERVIEWER_Z_08"
+		],
+		"next": "epilogue"
+	},
+	"epilogue": {
+		"type": "Dialog",
+		"image": "CellBackground.jpg",
+		"strings": [
+			"THOUGHTS_Z_08_LIE_END_00",
+			"EPILOGUE_RESCUE_00"
+		],
+		"next": "END_GAME"
 	}
 }
