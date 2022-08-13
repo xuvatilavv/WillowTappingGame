@@ -91,7 +91,7 @@ INTERLUDE_A_02_FUDGED	Shoot. Well... she might not know what that's about, but h
 INTERLUDE_A_03	The pattern is different this time. It reads...\nS... C... A... R... E... D.
 INTERLUDE_A_03_X	Scared. Poor Willow Thorn. They never should have even asked you to take her with you on this mission; you shouldn't have eventually relented. She shouldn't be in this situation. There's not much you can or should tell her though, unfortunately. There's no telling if any one else can hear you two tapping to each other, and if they're perhaps eagering listening to this conversation to see if they can decipher any secrets.
 INTERLUDE_A_04	Tapping out "BX" should be enough to tell her to "Be Quiet". That's the most important thing - now and in the interviews. That definitely needs to be the first thing to say.
-INTERLUDE_A_04_EXPECTED BX
+INTERLUDE_A_04_EXPECTED	BX
 INTERLUDE_A_04_EXPECTED_ALTERNATE	BQ
 INTERLUDE_A_04_FUDGED	Crap, that's not it. She's going to be totally confused now. [GameOverFlag]
 INTERLUDE_A_04_FUDGED_BQ	Close enough.
@@ -99,7 +99,7 @@ INTERLUDE_A_05	She's tapping back. O... K. That's it. Good, sounds like she unde
 INTERLUDE_A_05_EXPECTED	WEROK
 INTERLUDE_A_05_FUDGED	Crap, that's not it. She's going to be totally confused now. [GameOverFlag]
 INTERLUDE_A_06	No response. Let's just tap "BX" once more, make sure she understands how important that is. We'll call it a night. That's all that needs to be said, any way. One can only hope our little rookie stays strong.
-INTERLUDE_A_06_EXPECTED BX
+INTERLUDE_A_06_EXPECTED	BX
 INTERLUDE_A_06_EXPECTED_ALTERNATE	BQ
 INTERLUDE_A_06_FUDGED	Crap, that's not it. She's going to be totally confused now. [GameOverFlag]
 INTERLUDE_A_06_FUDGED_BQ	Close enough.
