@@ -14,10 +14,10 @@ scale = Vector2( 0.6, 0.6 )
 [node name="DialogHud" parent="." instance=ExtResource( 2 )]
 
 [node name="KnockProgress" type="ProgressBar" parent="."]
-margin_left = 118.0
-margin_top = 413.0
-margin_right = 901.0
-margin_bottom = 468.0
+margin_left = 113.0
+margin_top = 27.0
+margin_right = 896.0
+margin_bottom = 82.0
 theme = ExtResource( 3 )
 percent_visible = false
 

@@ -33,7 +33,13 @@ func _advance_message():
 		label.text = ""
 		emit_signal("messages_finished")
 		return
-	label.text = tr(_messages.pop_front())
+	var new: String = _messages.pop_front()
+	label.text = tr(new)
+	#HACK
+	if new.begins_with("INTERVIEWER"):
+		$SpeakerContainer/Panel/Label.text = "Interviewer"
+	else:
+		$SpeakerContainer/Panel/Label.text = "Me"
 
 
 func _unhandled_input(event):
