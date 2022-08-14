@@ -45,8 +45,7 @@
 		"strings": [
 			"INTERVIEWER_A_00",
 			"INTERVIEWER_A_01",
-			"INTERVIEWER_A_02",
-			"INTERVIEWER_A_03"
+			"INTERVIEWER_A_02"
 		],
 		"next": "interview_a_00_choices"
 	},
