@@ -13,7 +13,7 @@ LABEL_START	Start
 LABEL_CONTINUE	Continue
 LABEL_LETTER_TIMER	Letter Timer
 LABEL_WORD_TIMER	Word Timer
-INTERVIEWER_GENERIC_ACKNOWLEDGED	I see
+INTERVIEWER_GENERIC_ACKNOWLEDGED	I see.
 PROLOGUE_00	Mmm...| Damn, my head hurts. Where am I?| ...Looks like a holding cell. How did I end up here?| I've gotta think...| Okay. Last I recall, Willow Thorn and I were coming in to work at the Grim Sages' Office of Geomancy as usual, and our true identities and purpose was still unknown... I think.| We were getting closer to our objective, but still a couple of weeks away at least from getting access to the Ever-Stone Matrix.| Our first hour went fine... and so did the next few. I remember us grabbing lunch...
 PROLOGUE_01	Right. It was when we came back from lunch that things went wrong. Willow and I came back to the office, only to meet Jack Dexter, of all people. He recognized me even through my perception charm. I knew he could, but I was truly hoping he'd just leave Willow and I be. Since we were completely surrounded half an hour later, I'm going to assume he decided to rat us out.
 PROLOGUE_01_X	Bastard.
@@ -56,7 +56,7 @@ INTERVIEWER_A_07_D	Is she more or less a stranger to you then? Remember, tap onc
 INTERVIEWER_A_07_D_STRANGER_AFFIRMATIVE	I see. Noted, thank you.
 INTERVIEWER_A_07_E	Nothing to tell me about you and her then? Fine. Your lack of cooperation on this part is noted.
 INTERVIEWER_A_07_F_STOIC	Since you've not tapped even once so far, I'm almost tempted to ask if you even intend to answer any of these questions at all, but I'm not about to give you the opportunity to be smug and satisfied with ignoring such a hypothetical question. No, I think instead I'll keep asking, and we can both suffer through this together.
-INTERVIEWER_A_08	Next question is about how you're working for.
+INTERVIEWER_A_08	Next question is about who you're working for.
 THOUGHTS_A_08_00	Ah, so they don't know we're working for the Mages of Brittle Hollow? Fantastic. That means they may not know any thing at all about why we're here. Me showing up undercover without them having any idea who I'm working for probably has this bastard's superiors scared stiff. They're not going to lay a finger on me or Willow Thorn at all until one of us either gives them an answer or they figure it out themselves, and our disappearance will be noted and a rescue team sent to get us out of here before they could possibly figure us out on their own!
 THOUGHTS_A_08_01	As long as we keep the truth, or at least enough of it, from these guys, then we'll be saved. But it will be very important that neither I - nor Willow Thorn - slip up. If the Grim Sages learn too much, they'll be able to cause problems - problems big enough that the Mages of Brittle Hollow won't be able to send a rescue at all.
 INTERVIEWER_A_09_A	Pay attention. I'm going to give you multiple choices. Tap once if you're with the Sorceror's Covenant of Protectors, twice if you're with the Mages of Brittle Hollow, thrice if you're with Witches of the Corsair Coast, four times if you're with a different group than those three.
