@@ -23,7 +23,7 @@ theme = ExtResource( 3 )
 percent_visible = false
 
 [node name="InputTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="messages_finished" from="DialogHud" to="." method="_on_DialogHud_messages_finished"]
