@@ -1,18 +1,11 @@
-File: 9_squircle.png
-Source: I made it
-Author: xuv
-License: CC0
-
----
-
-File: CellBackground.png
+File: CellBackground.jpg
 Source: https://unsplash.com/photos/bjH4uE6iuEo
 Artist: Spencer Tamachi
 License: Unsplash License
 
 ---
 
-File: InterrogationBackground.png
+File: InterrogationBackground.jpg
 Source: https://unsplash.com/photos/u6OnpbMuZAs
 Artist: Matthew MacQuarrie
 License: Unsplash License
