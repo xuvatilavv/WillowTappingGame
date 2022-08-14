@@ -5,14 +5,14 @@ signal knock
 
 
 var knock_count := 0
-var can_knock := true
+var has_knocked := false
+var can_knock := false
 
 
 func load_conversation(conv: Dictionary):
 	_conv = conv
 	$Sprite.texture = load("res://img/" + conv["image"])
 	$DialogHud.show_messages([conv["query"]])
-	$InputTimer.start()
 
 
 func _init():
@@ -33,12 +33,19 @@ func _input(event):
 
 func _on_InputTimer_timeout():
 	can_knock = false
+	has_knocked = true
 	var responses: Array = _conv["responses"]
 	var selected = responses[min(responses.size()-1, knock_count)]
+	$KnockProgress.visible = false
 	$DialogHud.show_messages([selected])
 
 
 func _on_DialogHud_messages_finished():
-	var branches: Array = _conv["branches"]
-	var selected = branches[min(branches.size()-1, knock_count)]
-	ConversationManager.show(selected)
+	if not has_knocked:
+		can_knock = true
+		$KnockProgress.visible = true
+		$InputTimer.start()
+	else:
+		var branches: Array = _conv["branches"]
+		var selected = branches[min(branches.size()-1, knock_count)]
+		ConversationManager.show(selected)

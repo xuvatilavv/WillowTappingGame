@@ -32,10 +32,10 @@ func _advance_message():
 	if not label.text.empty() and label.advance():
 		return
 	if _messages.empty():
-		label.text = ""
 		emit_signal("messages_finished")
 		return
 
+	label.reset()
 	var new = _messages.pop_front()
 	# Split pages by delimiter character
 	var new_split = Array(tr(new).split(page_delimiter))
