@@ -10,6 +10,8 @@ signal messages_started
 signal messages_finished
 signal message_advanced
 
+const page_delimiter := "|"
+
 
 func _ready():
 	var _err = connect("message_advanced", AudioManager, "_on_message_advanced")
@@ -33,8 +35,14 @@ func _advance_message():
 		label.text = ""
 		emit_signal("messages_finished")
 		return
-	var new: String = _messages.pop_front()
-	label.text = tr(new)
+
+	var new = _messages.pop_front()
+	# Split pages by delimiter character
+	var new_split = Array(tr(new).split(page_delimiter))
+	label.text = new_split.pop_front().strip_edges()
+	if not new_split.empty():
+		# Add any text after the first page to the front of the message queue.
+		_messages = new_split + _messages
 	#HACK
 	if new.begins_with("INTERVIEWER"):
 		$SpeakerContainer/Panel/Label.text = "Interviewer"
