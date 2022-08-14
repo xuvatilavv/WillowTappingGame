@@ -114,7 +114,7 @@
 		],
 		"branches": [
 			"interview_a_01_choices_repeat_1",
-			"interlude_a"
+			"interview_a_02_dialog"
 		]
 	},
 	"interview_a_01_choices_repeat_1": {
@@ -128,7 +128,7 @@
 		],
 		"branches": [
 			"interview_a_01_choices_repeat_2",
-			"interlude_a"
+			"interview_a_02_dialog"
 		]
 	},
 	"interview_a_01_choices_repeat_2": {
@@ -141,7 +141,7 @@
 			"INTERVIEWER_A_05_NEGATIVE"
 		],
 		"branches": [
-			"interlude_a"
+			"interview_a_02_dialog"
 		]
 	},
 	"interview_a_02_dialog": {
@@ -226,15 +226,14 @@
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
 		"strings": [
-			"A favour for me will result in a favour for you and her, you see. Just make sure you keep answering, and truthfully, and I'll try to ensure she's happy and treated nicely, perhaps even that they put a nice soft cushion in her chair to sit on instead of leaving her to sit on the hard surface you and she are sitting on now. Otherwise... there will be no such benefits."
+			"INTERVIEWER_A_07_ANY_AFFIRMATIVE_SUPPLEMENTAL"
 		],
 		"next": "interview_a_02_choices_05_pre"
 	},
 	"interview_a_02_choices_05_pre": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_D",
-		"responses": [
+		"strings": [
 			"INTERVIEWER_A_08",
 			"THOUGHTS_A_08_00",
 			"THOUGHTS_A_08_01"
