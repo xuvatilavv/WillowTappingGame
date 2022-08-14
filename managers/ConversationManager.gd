@@ -18,7 +18,7 @@ var _conversations: Dictionary = {}
 
 func _init():
 	var file = File.new()
-	file.open("res://scenes/conversations.json", File.READ)
+	file.open("res://text/conversations.json", File.READ)
 	var json_raw = file.get_as_text()
 	file.close()
 	# TODO error checking and stuff
