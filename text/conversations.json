@@ -253,6 +253,8 @@
 		"branches": [
 			"interview_a_02_choices_05_01",
 			"interview_a_conclusion",
+			"interview_a_conclusion",
+			"interview_a_conclusion",
 			"interview_a_02_choices_05_01",
 		]
 	},
@@ -269,6 +271,8 @@
 		],
 		"branches": [
 			"interview_a_02_choices_05_02",
+			"interview_a_conclusion",
+			"interview_a_conclusion",
 			"interview_a_conclusion",
 			"interview_a_02_choices_05_02",
 		]
