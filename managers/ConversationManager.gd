@@ -1,5 +1,6 @@
 extends Node
 
+signal conversation_reached
 
 enum SceneType {
 	Dialog,
@@ -26,6 +27,8 @@ func _init():
 	
 	if OS.is_debug_build():
 		validate()
+	
+	var _err = connect("conversation_reached", SaveManager, "set_current")
 
 
 func show(conversation_name: String):
@@ -37,6 +40,7 @@ func show(conversation_name: String):
 		push_error("Conversation not defined: " + conversation_name)
 		return
 	
+	emit_signal("conversation_reached", conversation_name)
 	current_conversation = def
 	match def["type"]:
 		"Dialog":

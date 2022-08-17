@@ -32,12 +32,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Knock Code - Novice Summer Jam 2022 One-Button"
+config/name="Willow Tapping"
 run/main_scene="res://ui/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+SaveManager="*res://managers/SaveManager.gd"
 ConversationManager="*res://managers/ConversationManager.gd"
 AudioManager="*res://managers/AudioManager.tscn"
 

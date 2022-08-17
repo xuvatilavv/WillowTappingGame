@@ -2,6 +2,7 @@ extends VisibleScene
 
 
 signal knock
+signal choice_made
 
 
 var knock_count := 0
@@ -17,6 +18,7 @@ func load_conversation(conv: Dictionary):
 
 func _init():
 	var _err = connect("knock", AudioManager, "_on_knock")
+	_err = connect("choice_made", SaveManager, "add_choice")
 
 
 func _physics_process(_delta):
@@ -37,6 +39,7 @@ func _on_InputTimer_timeout():
 	var responses: Array = _conv["responses"]
 	var selected = responses[min(responses.size()-1, knock_count)]
 	$KnockProgress.visible = false
+	emit_signal("choice_made", selected)
 	$DialogHud.show_messages([selected])
 
 

@@ -9,7 +9,7 @@ TEST_KNOCK_REQUIRES	BOOP
 TEST_KNOCK_SUCCESS	i sure did knock that out of the park ha ha
 TEST_KNOCK_FAILURE	oh heck i am bad at this
 LABEL_QUIT	Quit
-LABEL_START	Start
+LABEL_START	New Game
 LABEL_CONTINUE	Continue
 LABEL_LETTER_TIMER	Letter Timer
 LABEL_WORD_TIMER	Word Timer
