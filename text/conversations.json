@@ -1,35 +1,8 @@
 {
-	"test": {
-		"type": "Dialog",
-		"strings": [
-			"TEST_0",
-			"TEST_1",
-			"TEST_2"
-		],
-		"image": "InterrogationBackground.jpg",
-		"next": "test_knock"
-	},
-	"test_knock": {
-		"type": "KnockCode",
-		"strings": [
-			"TEST_KNOCK_RECEIVED_0",
-			"TEST_KNOCK_REQUIRES"
-		],
-		"image": "CellBackground.jpg",
-		"next": "test_fin"
-	},
-	"test_fin": {
-		"type": "KnockCode",
-		"strings": [
-			"TEST_KNOCK_SUCCESS"
-		],
-		"image": "CellBackground.jpg",
-		"next": "END_GAME"
-	},
 	"prologue": {
 		"type": "Dialog",
 		"image": "CellBackground.jpg",
-		"strings": [
+		"intro": [
 			"PROLOGUE_00",
 			"PROLOGUE_01",
 			"PROLOGUE_01_X",
@@ -42,7 +15,7 @@
 	"interview_a_00_dialog": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_A_00",
 			"INTERVIEWER_A_01",
 			"INTERVIEWER_A_02"
@@ -50,251 +23,396 @@
 		"next": "interview_a_00_choices"
 	},
 	"interview_a_00_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_03",
-		"responses": [
-			"INTERVIEWER_A_03_NULL_RESPONSE",
-			"INTERVIEWER_A_03_AFFIRMATIVE",
-			"INTERVIEWER_A_03_NEGATIVE",
-			"INTERVIEWER_A_03_TOO_MANY_TAPS"
-		],
-		"branches": [
-			"interview_a_00_choices_repeat_1",
-			"interview_a_01_dialog"
+		"intro": [ "INTERVIEWER_A_03" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_03_NULL_RESPONSE",
+				"next": "interview_a_00_choices_repeat_1"
+			},
+			{
+				"response": "INTERVIEWER_A_03_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_TOO_MANY_TAPS",
+				"next": "interview_a_01_dialog"
+			}
 		]
 	},
 	"interview_a_00_choices_repeat_1": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_03_NULL_RESPONSE",
-		"responses": [
-			"INTERVIEWER_A_03_NULL_RESPONSE_TWICE",
-			"INTERVIEWER_A_03_AFFIRMATIVE",
-			"INTERVIEWER_A_03_NEGATIVE",
-			"INTERVIEWER_A_03_TOO_MANY_TAPS"
-		],
-		"branches": [
-			"interview_a_00_choices_repeat_2",
-			"interview_a_01_dialog"
+		"intro": [ "INTERVIEWER_A_03_NULL_RESPONSE" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_03_NULL_RESPONSE_TWICE",
+				"next": "interview_a_00_choices_repeat_2"
+			},
+			{
+				"response": "INTERVIEWER_A_03_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_TOO_MANY_TAPS",
+				"next": "interview_a_01_dialog"
+			}
 		]
 	},
 	"interview_a_00_choices_repeat_2": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_03_NULL_RESPONSE_TWICE",
-		"responses": [
-			"INTERVIEWER_A_03_NULL_RESPONSE_THRICE",
-			"INTERVIEWER_A_03_AFFIRMATIVE",
-			"INTERVIEWER_A_03_NEGATIVE",
-			"INTERVIEWER_A_03_TOO_MANY_TAPS"
-		],
-		"branches": [
-			"interview_a_01_dialog"
+		"intro": [ "INTERVIEWER_A_03_NULL_RESPONSE_TWICE" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_03_NULL_RESPONSE_THRICE",
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_01_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_03_TOO_MANY_TAPS",
+				"next": "interview_a_01_dialog"
+			}
 		]
 	},
 	"interview_a_01_dialog": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_A_04",
 			"THOUGHTS_A_04_00"
 		],
 		"next": "interview_a_01_choices"
 	},
 	"interview_a_01_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_05",
-		"responses": [
-			"INTERVIEWER_A_05_NULL_RESPONSE",
-			"INTERVIEWER_A_05_AFFIRMATIVE",
-			"INTERVIEWER_A_05_NEGATIVE"
-		],
-		"branches": [
-			"interview_a_01_choices_repeat_1",
-			"interview_a_02_dialog"
+		"intro": [ "INTERVIEWER_A_05" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_05_NULL_RESPONSE",
+				"next": "interview_a_01_choices_repeat_1"
+			},
+			{
+				"response": "INTERVIEWER_A_05_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_05_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			}
 		]
 	},
 	"interview_a_01_choices_repeat_1": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_05",
-		"responses": [
-			"INTERVIEWER_A_05_NULL_RESPONSE_TWICE",
-			"INTERVIEWER_A_05_AFFIRMATIVE",
-			"INTERVIEWER_A_05_NEGATIVE"
-		],
-		"branches": [
-			"interview_a_01_choices_repeat_2",
-			"interview_a_02_dialog"
+		"intro": [ "INTERVIEWER_A_05" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_05_NULL_RESPONSE_TWICE",
+				"next": "interview_a_01_choices_repeat_2"
+			},
+			{
+				"response": "INTERVIEWER_A_05_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_05_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			}
 		]
 	},
 	"interview_a_01_choices_repeat_2": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_05",
-		"responses": [
-			"INTERVIEWER_A_05_NULL_RESPONSE_THRICE_FIRST_NULL_RESPONSE",
-			"INTERVIEWER_A_05_AFFIRMATIVE",
-			"INTERVIEWER_A_05_NEGATIVE"
-		],
-		"branches": [
-			"interview_a_02_dialog"
+		"intro": [ "INTERVIEWER_A_05" ],
+		"choices": [
+			[
+				{
+					"requires": [ "not_stoic" ],
+					"response": "INTERVIEWER_A_05_NULL_RESPONSE_THRICE_FIRST_NULL_RESPONSE",
+					"next": "interview_a_02_dialog"
+				},
+				{
+					"requires": [],
+					"response": "INTERVIEWER_A_05_NULL_RESPONSE_THRICE_STOIC",
+					"next": "interview_a_02_dialog"
+				}
+			],
+			{
+				"response": "INTERVIEWER_A_05_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			},
+			{
+				"response": "INTERVIEWER_A_05_NEGATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_dialog"
+			}
 		]
 	},
 	"interview_a_02_dialog": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_A_06",
 			"THOUGHTS_A_06_00",
 		],
 		"next": "interview_a_02_choices_01"
 	},
 	"interview_a_02_choices_01": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_A",
-		"responses": [
-			"THOUGHTS_A_07_00",
-			"INTERVIEWER_A_07_A_FAMILY_AFFIRMATIVE"
-		],
-		"branches": [
-			"interview_a_02_choices_02"
+		"intro": [ "INTERVIEWER_A_07_A" ],
+		"choices": [
+			{
+				"response": "THOUGHTS_A_07_00",
+				"next": "interview_a_02_choices_02"
+			},
+			{
+				"response": "INTERVIEWER_A_07_A_FAMILY_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_01_followup"
+			},
+			{
+				"response": "THOUGHTS_A_07_00",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_02"
+			}
 		]
 	},
 	"interview_a_02_choices_01_followup": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_A_FAMILY_FOLLOWUP",
-		"responses": [
-			"INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_NO_ANSWER",
-			"INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_ANY_ANSWER"
-		],
-		"branches": [
-			"interview_a_02_choices_02"
+		"intro": [ "INTERVIEWER_A_07_A_FAMILY_FOLLOWUP" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_NO_ANSWER",
+				"next": "interview_a_02_choices_02"
+			},
+			{
+				"response": "INTERVIEWER_A_07_A_FAMILY_FOLLOWUP_AFFIRMATIVE_ANY_ANSWER",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_05_00"
+			}
 		]
 	},
 	"interview_a_02_choices_02": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_B",
-		"responses": [
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED",
-			"INTERVIEWER_A_07_B_LOVER_AFFIRMATIVE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
+		"intro": [ "INTERVIEWER_A_07_B" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"next": "interview_a_02_choices_03"
+			},
+			{
+				"response": "INTERVIEWER_A_07_B_LOVER_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_affirmative_supplemental"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_03"
+			}
 		],
-		"branches": [
-			"interview_a_02_choices_03",
-			"interview_a_02_choices_affirmative_supplemental",
-			"interview_a_02_choices_03",
-		]
 	},
 	"interview_a_02_choices_03": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_C",
-		"responses": [
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED",
-			"INTERVIEWER_A_07_C_FAMILY_FRIEND_AFFIRMATIVE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
-		],
-		"branches": [
-			"interview_a_02_choices_04",
-			"interview_a_02_choices_affirmative_supplemental",
-			"interview_a_02_choices_04",
+		"intro": [ "INTERVIEWER_A_07_C" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"next": "interview_a_02_choices_04"
+			},
+			{
+				"response": "INTERVIEWER_A_07_C_FAMILY_FRIEND_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_affirmative_supplemental"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_04"
+			}
 		]
 	},
 	"interview_a_02_choices_04": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_07_D",
-		"responses": [
-			"INTERVIEWER_A_07_E",
-			"INTERVIEWER_A_07_D_STRANGER_AFFIRMATIVE",
-			"INTERVIEWER_A_07_E"
-		],
-		"branches": [
-			"interview_a_02_choices_05_pre",
-			"interview_a_02_choices_affirmative_supplemental",
-			"interview_a_02_choices_05_pre",
+		"intro": [ "INTERVIEWER_A_07_D" ],
+		"choices": [
+			[
+				{
+					"requires": [ "not_stoic" ],
+					"response": "INTERVIEWER_A_07_E",
+					"next": "interview_a_02_choices_05_00"
+				},
+				{
+					"requires": [],
+					"response": "INTERVIEWER_A_07_F_STOIC",
+					"next": "interview_a_02_choices_05_00"
+				}
+			],
+			{
+				"response": "INTERVIEWER_A_07_D_STRANGER_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_affirmative_supplemental"
+			},
+			{
+				"response": "INTERVIEWER_A_07_E",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_05_00"
+			}
 		]
 	},
 	"interview_a_02_choices_affirmative_supplemental": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_A_07_ANY_AFFIRMATIVE_SUPPLEMENTAL"
-		],
-		"next": "interview_a_02_choices_05_pre"
-	},
-	"interview_a_02_choices_05_pre": {
-		"type": "Dialog",
-		"image": "InterrogationBackground.jpg",
-		"strings": [
-			"INTERVIEWER_A_08",
-			"THOUGHTS_A_08_00",
-			"THOUGHTS_A_08_01"
 		],
 		"next": "interview_a_02_choices_05_00"
 	},
 	"interview_a_02_choices_05_00": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_09_A",
-		"responses": [
-			"INTERVIEWER_A_09_A_STILL_SILENT",
-			"INTERVIEWER_A_09_A_ALPHA_AFFIRMATIVE",
-			"INTERVIEWER_A_09_A_CANONICAL_AFFIRMATIVE",
-			"INTERVIEWER_A_09_A_BRAVO_AFFIRMATIVE",
-			"INTERVIEWER_A_09_A_OTHER"
+		"intro": [
+			"INTERVIEWER_A_08",
+			"THOUGHTS_A_08_00",
+			"THOUGHTS_A_08_01",
+			"INTERVIEWER_A_09_A"
 		],
-		"branches": [
-			"interview_a_02_choices_05_01",
-			"interview_a_conclusion",
-			"interview_a_conclusion",
-			"interview_a_conclusion",
-			"interview_a_02_choices_05_01",
+		"choices": [
+			[
+				{
+					"requires": [ "INTERVIEWER_A_09_A_SILENT" ],
+					"response": "INTERVIEWER_A_09_A_STILL_SILENT",
+					"next": "interview_a_02_choices_05_00"
+				},
+				{
+					"requires": [],
+					"response": "INTERVIEWER_A_09_A_SILENT",
+					"next": "interview_a_02_choices_05_01"
+				}
+			],
+			{
+				"response": "INTERVIEWER_A_09_A_ALPHA_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_A_CANONICAL_AFFIRMATIVE",
+				"facts": [ "not_stoic", "revealed_group" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_A_BRAVO_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_A_OTHER",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_02_choices_05_01"
+			}
 		]
 	},
 	"interview_a_02_choices_05_01": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_09_B",
-		"responses": [
-			"INTERVIEWER_A_09_B_SILENT",
-			"INTERVIEWER_A_09_B_CHARLIE_AFFIRMATIVE",
-			"INTERVIEWER_A_09_B_DELTA_AFFIRMATIVE",
-			"INTERVIEWER_A_09_B_ECHO_AFFIRMATIVE",
-			"INTERVIEWER_A_09_B_OTHER"
-		],
-		"branches": [
-			"interview_a_02_choices_05_02",
-			"interview_a_conclusion",
-			"interview_a_conclusion",
-			"interview_a_conclusion",
-			"interview_a_02_choices_05_02",
+		"intro": [ "INTERVIEWER_A_09_B" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_A_09_B_SILENT",
+				"next": "interview_a_02_choices_05_02"
+			},
+			{
+				"response": "INTERVIEWER_A_09_B_CHARLIE_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_B_DELTA_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_B_ECHO_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_B_OTHER",
+				"next": "interview_a_02_choices_05_02"
+			}
 		]
 	},
 	"interview_a_02_choices_05_02": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_A_09_C",
-		"responses": [
-			"INTERVIEWER_A_09_C_SILENT",
-			"INTERVIEWER_A_09_C_FOXTROT_AFFIRMATIVE",
-			"INTERVIEWER_A_09_C_GOLF_AFFIRMATIVE",
-			"INTERVIEWER_A_09_C_OTHER"
-		],
-		"branches": [
-			"interview_a_conclusion",
+		"intro": [ "INTERVIEWER_A_09_C" ],
+		"choices": [
+			[
+				{
+					"requires": [ "not_stoic" ],
+					"response": "INTERVIEWER_A_09_C_SILENT",
+					"next": "interview_a_conclusion"
+				},
+				{
+					"requires": [],
+					"response": "INTERVIEWER_A_09_C_STOIC",
+					"next": "interview_a_conclusion"
+				}
+			],
+			{
+				"response": "INTERVIEWER_A_09_C_FOXTROT_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_C_GOLF_AFFIRMATIVE",
+				"facts": [ "not_stoic" ],
+				"next": "interview_a_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_A_09_C_OTHER",
+				"next": "interview_a_conclusion"
+			}
 		]
 	},
 	"interview_a_conclusion": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_A_10_SOMETIMES_ANSWERED"
 		],
 		"next": "interlude_a"
@@ -302,7 +420,7 @@
 	"interlude_a": {
 		"type": "Dialog",
 		"image": "CellBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERLUDE_A_00", "INTERLUDE_A_01", "INTERLUDE_A_01_X",
 			"INTERLUDE_A_02",
 			"INTERLUDE_A_03", "INTERLUDE_A_03_X",
@@ -317,65 +435,94 @@
 	"interview_z": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_Z_00",
 			"THOUGHTS_Z_00_A", "THOUGHTS_Z_00_B", "THOUGHTS_Z_00_C", "THOUGHTS_Z_00_D",
-			"INTERVIEWER_Z_01", "INTERVIEWER_Z_02", "INTERVIEWER_Z_03"
+			"INTERVIEWER_Z_01", "INTERVIEWER_Z_02", "INTERVIEWER_Z_03", "INTERVIEWER_Z_04"
 		],
 		"next": "interview_z_00_choices"
 	},
 	"interview_z_00_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_Z_04",
-		"responses": [
-			"INTERVIEWER_Z_SILENCE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
-		],
-		"branches": [
-			"interview_z_01_choices"
+		"intro": [ "INTERVIEWER_Z_04_Q" ],
+		"choices": [
+			[
+				{
+					"requires": [ "INTERVIEWER_Z_04_SILENCE" ],
+					"response": "INTERVIEWER_Z_SILENCE",
+					"next": "interview_z_conclusion"
+				},
+				{
+					"requires": [],
+					"response": "INTERVIEWER_Z_04_SILENCE",
+					"next": "interview_z_00_choices"
+				}
+			],
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_z_01_choices"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic", "revealed_group" ],
+				"next": "interview_z_01_choices"
+			}
 		]
 	},
 	"interview_z_01_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_Z_05",
-		"responses": [
-			"INTERVIEWER_Z_SILENCE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
-		],
-		"branches": [
-			"interview_z_02_choices"
+		"intro": [ "INTERVIEWER_Z_05" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_Z_SILENCE",
+				"next": "interview_z_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_z_02_choices"
+			}
 		]
 	},
 	"interview_z_02_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_Z_06",
-		"responses": [
-			"INTERVIEWER_Z_SILENCE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
-		],
-		"branches": [
-			"interview_z_03_choices"
+		"intro": [ "INTERVIEWER_Z_06" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_Z_SILENCE",
+				"next": "interview_z_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_z_03_choices"
+			}
 		]
 	},
 	"interview_z_03_choices": {
-		"type": "MultipleChoice",
+		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
-		"query": "INTERVIEWER_Z_07",
-		"responses": [
-			"INTERVIEWER_Z_SILENCE",
-			"INTERVIEWER_GENERIC_ACKNOWLEDGED"
-		],
-		"branches": [
-			"interview_z_conclusion"
+		"intro": [ "INTERVIEWER_Z_07" ],
+		"choices": [
+			{
+				"response": "INTERVIEWER_Z_SILENCE",
+				"next": "interview_z_conclusion"
+			},
+			{
+				"response": "INTERVIEWER_GENERIC_ACKNOWLEDGED",
+				"facts": [ "not_stoic" ],
+				"next": "interview_z_conclusion"
+			}
 		]
 	},
 	"interview_z_conclusion": {
 		"type": "Dialog",
 		"image": "InterrogationBackground.jpg",
-		"strings": [
+		"intro": [
 			"INTERVIEWER_Z_08"
 		],
 		"next": "epilogue"
@@ -383,9 +530,32 @@
 	"epilogue": {
 		"type": "Dialog",
 		"image": "CellBackground.jpg",
-		"strings": [
-			"THOUGHTS_Z_08_LIE_END_00",
-			"EPILOGUE_RESCUE_00"
+		"intro": [
+			[
+				{
+					"requires": [ "not_stoic", "revealed_group" ],
+					"strings": [
+						"THOUGHTS_Z_08_BAD_END_00",
+						"THOUGHTS_Z_08_BAD_END_01",
+						"THOUGHTS_Z_08_BAD_END_02"
+					]
+				},
+				{
+					"requires": [ "not_stoic" ],
+					"strings": [
+						"THOUGHTS_Z_08_LIE_END_00",
+						"THOUGHTS_Z_08_SILENCE_END_01",
+						"EPILOGUE_RESCUE_00"
+					]
+				},
+				{
+					"requires": [],
+					"strings": [
+						"THOUGHTS_Z_08_STOIC_END_00",
+						"EPILOGUE_RESCUE_00"
+					]
+				}
+			]
 		],
 		"next": "END_GAME"
 	}

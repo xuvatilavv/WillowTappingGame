@@ -22,7 +22,6 @@ func _init():
 	file.open("res://text/conversations.json", File.READ)
 	var json_raw = file.get_as_text()
 	file.close()
-	# TODO error checking and stuff
 	_conversations = JSON.parse(json_raw).result
 	
 	if OS.is_debug_build():
@@ -45,10 +44,12 @@ func show(conversation_name: String):
 	match def["type"]:
 		"Dialog":
 			var _err = get_tree().change_scene_to(_DialogScene)
-		"KnockCode":
+		"KnockInput":
 			var _err = get_tree().change_scene_to(_KnockCodeScene)
-		"MultipleChoice":
+		"Choice":
 			var _err = get_tree().change_scene_to(_MultipleChoiceScene)
+		_:
+			push_error("Unknown conversation type: %s" % def["type "])
 
 
 func validate():
@@ -64,9 +65,13 @@ func validate():
 			null:
 				errors.append("Missing 'type'.")
 			"Dialog":
-				errors += validate_Dialog(dict)
-			"MultipleChoice":
-				errors += validate_MultipleChoice(dict)
+				errors += validate_DialogType(dict)
+			"Choice":
+				errors += validate_ChoiceType(dict)
+			"KnockInput":
+				errors += validate_KnockInputType(dict)
+			"KnockOutput":
+				errors += validate_KnockOutputType(dict)
 			_:
 				errors.append("Unknown type: '%s'" % dict.get("type"))
 		
@@ -78,29 +83,39 @@ func validate_strings(strings: Array) -> Array:
 	var errors = []
 	
 	for string in strings:
-		# Doesn't account for keys that match their translation but that should
-		# rarely or never happen. Also only checks the current locale.
-		if tr(string) == string:
-			errors.append(string)
+	# Doesn't account for keys that match their translation but that should
+	# rarely or never happen. Also only checks the current locale.
+		if typeof(string) == TYPE_STRING:
+			if tr(string) == string:
+				errors.append(string)
+		elif typeof(string) == TYPE_ARRAY:
+			#TODO validate alternate strings (keys: response, strings)
+			pass
+		else:
+			errors.append("String is not String or alt Array.")
 
 	return errors
 
 
-func validate_Dialog(dict: Dictionary) -> Array:
+func validate_intro(dict: Dictionary) -> Array:
 	var errors = []
 
-	var strings = dict.get("strings")
+	var strings = dict.get("intro")
 	if strings == null:
-		errors.append("Missing 'strings'.")
+		errors.append("Missing 'intro'.")
 	elif typeof(strings) != TYPE_ARRAY:
-		errors.append("Strings is not an Array.")
+		errors.append("Intro is not an Array.")
 	else:
 		var bad_strings = validate_strings(strings)
 		if not bad_strings.empty():
 			errors.append("Invalid String IDs: %s" % bad_strings)
 	
-	# TODO validate image is specified and exists
-	
+	return errors
+
+
+func validate_next(dict: Dictionary) -> Array:
+	var errors = []
+
 	var next = dict.get("next")
 	if next == null:
 		errors.append("Missing 'next'.")
@@ -110,37 +125,150 @@ func validate_Dialog(dict: Dictionary) -> Array:
 	return errors
 
 
-func validate_MultipleChoice(dict: Dictionary) -> Array:
+func validate_choice_single(dict: Dictionary) -> Array:
 	var errors = []
-
-	var query = dict.get("query")
-	if query == null:
-		errors.append("Missing 'query'.")
-	elif typeof(query) != TYPE_STRING:
-		errors.append("Query is not a String.")
-	else:
-		var bad_strings = validate_strings([query])
-		if not bad_strings.empty():
-			errors.append("Query is invalid ID: '%s'" % query)
 	
-	var responses = dict.get("responses")
-	if responses == null:
-		errors.append("Missing 'responses'.")
-	elif typeof(responses) != TYPE_ARRAY:
-		errors.append("Responses is not an Array.")
+	# optional
+	var requires = dict.get("requires")
+	if requires != null:
+		if typeof(requires) != TYPE_ARRAY:
+			errors.append("Requires is not an Array.")
+		else:
+			#TODO can be a string ID or Fact from another conversation
+			pass
+
+	# optional	
+	var response = dict.get("response")
+	if response != null:
+		if typeof(response) != TYPE_STRING:
+			errors.append("Response is not a String.")
+		else:
+			var bad_strings = validate_strings([response])
+			if not bad_strings.empty():
+				errors.append("Invalid String IDs: %s" % bad_strings)
+	
+	# optional
+	var facts = dict.get("facts")
+	#TODO no real limitations here
+	
+	errors += validate_next(dict)
+
+	return errors
+
+
+func validate_choices(dict: Dictionary) -> Array:
+	var errors = []
+	
+	var choices = dict.get("choices")
+	if choices == null:
+		errors.append("Missing 'choices'.")
+	elif typeof(choices) != TYPE_ARRAY:
+		errors.append("Choices is not an Array.")
 	else:
-		var bad_strings = validate_strings(responses)
+		for choice in choices:
+			if typeof(choice) == TYPE_DICTIONARY:
+				errors += validate_choice_single(choice)
+			elif typeof(choice) == TYPE_ARRAY:
+				for alt in choice:
+					errors += validate_choice_single(alt)
+			else:
+				errors.append("Choice is neither a Dictionary nor Array.")
+
+	return errors
+
+
+func validate_message(dict: Dictionary) -> Array:
+	var errors = []
+	
+	var message = dict.get("message")
+	if message == null:
+		errors.append("Missing 'message'.")
+	else:
+		var bad_strings = validate_strings([message])
 		if not bad_strings.empty():
 			errors.append("Invalid String IDs: %s" % bad_strings)
 	
-	var branches = dict.get("branches")
-	if branches == null:
-		errors.append("Missing 'branches'.")
-	elif typeof(branches) != TYPE_ARRAY:
-		errors.append("Branches is not an Array.")
+	return errors
+
+
+func validate_expected_single(dict: Dictionary) -> Array:
+	var errors = []
+	
+	var response = dict.get("response")
+	if response == null:
+		errors.append("Missing 'response'.")
 	else:
-		for br in branches:
-			if _conversations.get(br) == null:
-				errors.append("Invalid branch target: %s" % br)
+		var bad_strings = validate_strings([ response ])
+		if not bad_strings.empty():
+			errors.append("Invalid String IDs: %s" % bad_strings)
+
+	var facts = dict.get("facts")
+	#TODO
+	
+	errors += validate_next(dict)
+	
+	return errors
+
+
+func validate_expected(dict: Dictionary) -> Array:
+	var errors = []
+	
+	var expected = dict.get("expected")
+	if expected == null:
+		errors.append("Missing 'expected'.")
+	elif typeof(expected) != TYPE_DICTIONARY:
+		errors.append("Expected is not a Dictionary.")
+	else:
+		var default =  expected.get("_")
+		if default == null:
+			errors.append("Missing '_' (default).")
+		else:
+			errors += validate_expected_single(default)
+		
+		var keys = expected.keys()
+		var default_idx = keys.find("_")
+		keys.remove(default_idx)
+		for key in keys:
+			var bad_strings = validate_strings([key])
+			if not bad_strings.empty():
+				errors.append("Invalid String ID as key: %s" % key)
+			errors += validate_expected_single(expected[key])
+
+	return errors
+
+
+func validate_DialogType(dict: Dictionary) -> Array:
+	var errors = []
+
+	errors += validate_intro(dict)
+	errors += validate_next(dict)
+	# TODO validate image is specified and exists
+	
+	return errors
+
+
+func validate_ChoiceType(dict: Dictionary) -> Array:
+	var errors = []
+	
+	errors += validate_intro(dict)
+	errors += validate_choices(dict)
+	
+	return errors
+
+
+func validate_KnockOutputType(dict: Dictionary) -> Array:
+	var errors = []
+	
+	errors += validate_intro(dict)
+	errors += validate_message(dict)
+
+	return errors
+
+
+func validate_KnockInputType(dict: Dictionary) -> Array:
+	var errors = []
+	
+	errors += validate_intro(dict)
+	errors += validate_expected(dict)
 	
 	return errors

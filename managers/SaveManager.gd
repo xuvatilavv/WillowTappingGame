@@ -3,22 +3,19 @@ extends Node
 
 var _data := {
 	"current": "prologue",
-	"chose": [],
+	"flags": [],
 }
 
 const save_path := "user://savedata.json"
 
 
-func add_choice(id: String) -> void:
-	if _data["chose"].count(id) > 0:
-		push_warning("Tried to save choice ID but it's already present in the save: %s" % id)
-		return
-	_data["chose"].append(id)
+func set_flag(id: String) -> void:
+	_data["flags"].append(id)
 	save_data()
 
 
-func get_choices() -> Array:
-	return _data["chose"]
+func is_flag_set(flag: String) -> bool:
+	return _data["flags"].has(flag)
 
 
 func set_current(id: String) -> void:

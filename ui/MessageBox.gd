@@ -37,6 +37,24 @@ func _advance_message():
 
 	label.reset()
 	var new = _messages.pop_front()
+
+	#HACK select alt string based on flags if specified
+	if typeof(new) == TYPE_ARRAY:
+		for alt in new:
+			var requires = alt.get("requires")
+			if requires == null or requires.empty():
+				_messages = alt["strings"] + _messages
+				break
+			var requirements_met = true
+			for flag in requires:
+				if not SaveManager.is_flag_set(flag):
+					requirements_met = false
+					break
+			if requirements_met:
+				_messages = alt["strings"] + _messages
+				break
+		new = _messages.pop_front()
+
 	# Split pages by delimiter character
 	var new_split = Array(tr(new).split(page_delimiter))
 	label.text = new_split.pop_front().strip_edges()

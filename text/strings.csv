@@ -63,7 +63,7 @@ INTERVIEWER_A_09_A	Pay attention. I'm going to give you multiple choices. Tap on
 INTERVIEWER_A_09_A_ALPHA_AFFIRMATIVE	...I see.
 INTERVIEWER_A_09_A_CANONICAL_AFFIRMATIVE	Well well well... how interesting! Excuse me, I'll need to tell me superiors right away. [GameOverFlag]
 INTERVIEWER_A_09_A_BRAVO_AFFIRMATIVE	...Interesting.
-INTERVIEWER_A_09_A_SILENT	I'll ask again. Pay attention. I'm going to give you multiple choices. Tap once if you're with the Sorceror's Covenant of Protectors, twice if you're with the Mages of Brittle Hollow, thrice if you're with the Witches of the Corsair Coast, four times if you're with a different group than those three.
+INTERVIEWER_A_09_A_SILENT	I'll ask again.
 INTERVIEWER_A_09_A_STILL_SILENT	I'll just assume you meant to tap four times.
 INTERVIEWER_A_09_A_OTHER	Another group? Very well:
 INTERVIEWER_A_09_B	Tap once if you're with the Sacred Enchanters of Xerxes, twice if you're with the Order of Sigma, thrice if you're with the Huntresses of Mysterium, four times if you're with a different group.
@@ -114,8 +114,9 @@ THOUGHTS_Z_00_D	Eventually, the silence is interrupted by the sound of the door 
 INTERVIEWER_Z_01	Would you like to know how Willow Thorn did in her latest interview? I'm being rhetorical again, don't bother answering. Just look here... see this spot on my jacket? That's not my blood. Don't worry, she eventually figured out what was in her best interest. We know what we want to know, all thanks to her. But my superiors want to give you one last chance to realize what's in your best interest.
 INTERVIEWER_Z_02	We won't be forceful with you like we just were with her, no. Again, you're far too dangerous. We wouldn't discount the possibility you'd somehow use a bleeding wound to paint a sigil in your blood and escape with that. Luckily for you, your skill set is still of interest to my superiors, and luckily for you, you have a known reputation of being something of a mercenary in the world of magic. Whatever you're being paid, we're willing to double it, as a starting offer. I'll ask you some questions, some you might recognize, and if you answer them all correctly, then we'll consider that as you being willing to join us in our employment.
 INTERVIEWER_Z_03	To further entice you not to betray us once employed, and to encourage you to seriously consider employment with us, we will be notifying your organization regardless of what you answer me here that you and Willow Thorn were both fully forthcoming will all information you had on them, and see to it that your reputation is ruined with them and any other organizations you might ever align yourself with. Outside of us, your career opportunities as a magical mercenary will be over. Your choice here will be whether you wish to have a fruitful career with us, or whether you wish to be unceremoniously killed at the nearest opportunity and disgracefully left unburied somewhere.
-INTERVIEWER_Z_04	As time is precious, I'll just start asking now. Tap once if you're with the Sorceror's Covenant of Protectors, twice if you're with the Mages of Brittle Hollow.
-INTERVIEWER_Z_04_SILENCE	Tap once if you're with the Sorceror's Covenant of Protectors, twice if you're with the Mages of Brittle Hollow.
+INTERVIEWER_Z_04	As time is precious, I'll just start asking now.
+INTERVIEWER_Z_04_Q	Tap once if you're with the Sorceror's Covenant of Protectors, twice if you're with the Mages of Brittle Hollow.
+INTERVIEWER_Z_04_SILENCE	I'll ask one more time.
 INTERVIEWER_Z_05	Tap once if you're been conspiring with Jack Dexter, twice if you're lying.
 INTERVIEWER_Z_06	Tap once if you're attempting to seek access to the Ever-Stone Matrix, twice if you're lying.
 INTERVIEWER_Z_07	Tap once if you're expecting a rescue team to come get you, twice if you're not.
