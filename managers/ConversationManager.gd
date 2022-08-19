@@ -9,6 +9,7 @@ enum SceneType {
 }
 
 
+var _MainMenuScene = preload("res://ui/MainMenu.tscn")
 var _DialogScene = preload("res://scenes/DialogScene.tscn")
 var _KnockCodeScene = preload("res://scenes/KnockCodeScene.tscn")
 var _MultipleChoiceScene = preload("res://scenes/MultipleChoiceScene.tscn")
@@ -32,7 +33,7 @@ func _init():
 
 func show(conversation_name: String):
 	if (conversation_name == "END_GAME"):
-		print_debug("TODO: END GAME GOES HERE")
+		get_tree().change_scene_to(_MainMenuScene)
 		return
 	var def = _conversations.get(conversation_name)
 	if def == null:
