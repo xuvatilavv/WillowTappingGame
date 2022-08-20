@@ -68,6 +68,9 @@ func _advance_message():
 		$SpeakerContainer/Panel/Label.text = "Interviewer"
 	elif _me_regex.search(new):
 		$SpeakerContainer/Panel/Label.text = "Me"
+	
+	if label.text == "":
+		_advance_message()
 
 
 func _unhandled_input(event):
