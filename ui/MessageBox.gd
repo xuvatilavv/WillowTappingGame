@@ -5,6 +5,7 @@ onready var messagebox: Container = $MarginContainer
 onready var label: PagedRichTextLabel = $MarginContainer/Panel/RichTextLabel
 
 var _messages: Array = []
+var _me_regex = RegEx.new()
 
 signal messages_started
 signal messages_finished
@@ -16,6 +17,7 @@ const page_delimiter := "|"
 func _ready():
 	var _err = connect("message_advanced", AudioManager, "_on_message_advanced")
 	label.text = ""
+	_me_regex.compile("^(PROLOGUE|THOUGHTS|INTERLUDE|EPILOGUE)")
 
 
 func show_messages(messages: Array):
@@ -64,7 +66,7 @@ func _advance_message():
 	#HACK
 	if new.begins_with("INTERVIEWER"):
 		$SpeakerContainer/Panel/Label.text = "Interviewer"
-	else:
+	elif _me_regex.search(new):
 		$SpeakerContainer/Panel/Label.text = "Me"
 
 
