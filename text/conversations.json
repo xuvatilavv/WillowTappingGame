@@ -273,12 +273,12 @@
 				{
 					"requires": [ "not_stoic" ],
 					"response": "INTERVIEWER_A_07_E",
-					"next": "interview_a_02_choices_05_00"
+					"next": "interview_a_02_choices_05_00_pre"
 				},
 				{
 					"requires": [],
 					"response": "INTERVIEWER_A_07_F_STOIC",
-					"next": "interview_a_02_choices_05_00"
+					"next": "interview_a_02_choices_05_00_pre"
 				}
 			],
 			{
@@ -289,7 +289,7 @@
 			{
 				"response": "INTERVIEWER_A_07_E",
 				"facts": [ "not_stoic" ],
-				"next": "interview_a_02_choices_05_00"
+				"next": "interview_a_02_choices_05_00_pre"
 			}
 		]
 	},
@@ -299,15 +299,22 @@
 		"intro": [
 			"INTERVIEWER_A_07_ANY_AFFIRMATIVE_SUPPLEMENTAL"
 		],
+		"next": "interview_a_02_choices_05_00_pre"
+	},
+	"interview_a_02_choices_05_00_pre": {
+		"type": "Dialog",
+		"image": "InterrogationBackground.jpg",
+		"intro": [
+			"INTERVIEWER_A_08",
+			"THOUGHTS_A_08_00",
+			"THOUGHTS_A_08_01"
+		],
 		"next": "interview_a_02_choices_05_00"
 	},
 	"interview_a_02_choices_05_00": {
 		"type": "Choice",
 		"image": "InterrogationBackground.jpg",
 		"intro": [
-			"INTERVIEWER_A_08",
-			"THOUGHTS_A_08_00",
-			"THOUGHTS_A_08_01",
 			"INTERVIEWER_A_09_A"
 		],
 		"choices": [
